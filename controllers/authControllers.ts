@@ -1,4 +1,3 @@
-// authController.ts
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -11,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const result = await pool.query('SELECT id, username, email FROM users');
-    res.json(result.rows); // send JSON array of users
+    res.json(result.rows); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
@@ -67,7 +66,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
-  const userId = Number(req.params.id); // user id in route params
+  const userId = Number(req.params.id); 
 
   try {
     const userQuery = await pool.query('SELECT * FROM users WHERE id = $1', [userId]);

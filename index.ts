@@ -3,10 +3,7 @@ import express, { Request, Response } from 'express';
 import authRoutes from './routes/authRoutes';
 
 const app = express();
-app.use(express.json());  // parses incoming JSON requests
-
-// Connect to MongoDB
-// connectDB();
+app.use(express.json());
 
 // Routes
 app.use('/auth', authRoutes);
